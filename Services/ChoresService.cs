@@ -13,6 +13,16 @@ namespace ChoreScore.Services
             _choresRepository = choresRepository;
         }
 
+        internal Chore CreateChore(Chore choreData)
+        {
+            if (choreData.Name == null)
+            {
+                throw new Exception("Please provide a chore name");
+            }
+            Chore chore = _choresRepository.CreateChore(choreData);
+            return chore;
+        }
+
         internal Chore GetChoreById(int choreId)
         {
             Chore chore = _choresRepository.GetChoreById(choreId);

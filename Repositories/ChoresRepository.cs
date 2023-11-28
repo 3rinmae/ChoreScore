@@ -17,6 +17,21 @@ namespace ChoreScore.Repositories
             ];
         }
 
+        internal Chore CreateChore(Chore choreData)
+        {
+            Chore lastChore = _chores[_chores.Count - 1];
+            if (lastChore == null)
+            {
+                choreData.Id = 1;
+            }
+            else
+            {
+                choreData.Id = lastChore.Id + 1;
+            }
+            _chores.Add(choreData);
+            return choreData;
+        }
+
         internal Chore GetChoreById(int choreId)
         {
             Chore foundChore = _chores.Find(chore => chore.Id == choreId);
