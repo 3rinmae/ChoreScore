@@ -23,6 +23,13 @@ namespace ChoreScore.Services
             return chore;
         }
 
+        internal string DestroyChore(int choreId)
+        {
+            Chore chore = GetChoreById(choreId);
+            _choresRepository.DestroyChore(chore);
+            return $"{chore.Name} has been deleted";
+        }
+
         internal Chore GetChoreById(int choreId)
         {
             Chore chore = _choresRepository.GetChoreById(choreId);

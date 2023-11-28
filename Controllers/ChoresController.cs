@@ -61,5 +61,19 @@ namespace ChoreScore.Controllers
             }
         }
 
+        [HttpDelete("{choreId}")]
+        public ActionResult<string> DestroyChore(int choreId)
+        {
+            try
+            {
+                string message = _choresService.DestroyChore(choreId);
+                return Ok(message);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

@@ -32,6 +32,11 @@ namespace ChoreScore.Repositories
             return choreData;
         }
 
+        internal void DestroyChore(Chore chore)
+        {
+            _chores.Remove(chore);
+        }
+
         internal Chore GetChoreById(int choreId)
         {
             Chore foundChore = _chores.Find(chore => chore.Id == choreId);
